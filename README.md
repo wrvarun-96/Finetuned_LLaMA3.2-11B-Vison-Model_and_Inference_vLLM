@@ -30,8 +30,25 @@ This repository contains the **fine-tuned LLaMA 3.2-11B Vision Model** for **rad
 ## ⚡ vLLM Deployment on RunPod
 ### Why vLLM?
 - **vLLM** is an optimized inference engine for **efficient throughput and memory usage**.
-- It uses **PagedAttention**, reducing VRAM consumption and improving **batch processing**.
+- **It uses **PagedAttention**, reducing VRAM consumption and improving **batch processing**.
 - **RunPod** provides an affordable cloud-based GPU environment for **deploying vLLM models**.
+  
+### 🚀 Setting Up vLLM on RunPod
+
+**Create an instance** with the vLLM template: `"llama3.2-11B-Vision-Model"`
+**Start the container** with the following command to run your model:
+   ```sh
+   --model Varu96/Llama-3.2-11B-Vision-Radiology-mini \
+   --enforce-eager \
+   --max-num-seqs 8 \
+   --limit-mm-per-prompt 'image=1' \
+   --max-model-len 2048 \
+   --port 8000
+```
+**Once the container is running, retrieve the base URL:
+```sh
+https://9xeffjgstk6m28-8000.proxy.runpod.net
+```
 
 ## 🏋️ Fine-Tuning the Model
 
@@ -50,9 +67,9 @@ chainlit run chat.py
 ```
 This launches a local web app (http://localhost:8000) where you can:
 
--- Upload radiology images
--- Ask questions about the image
--- Receive AI-generated diagnoses using vLLM inference.
+- **Upload radiology images
+- **Ask questions about the image
+- **Receive AI-generated diagnoses using vLLM inference.
 
 ## 📜 Training & Inference Code
 
@@ -63,7 +80,7 @@ model, tokenizer = FastVisionModel.from_pretrained(
     model_name='unsloth/Llama-3.2-11B-Vision-Instruct',
     max_seq_length=2048,
     dtype=None,
-    load_in_4bit=False
+    load_in_4bit=True
 )
 ```
 
@@ -96,16 +113,17 @@ model_unsloth.push_to_hub_merged(
 
 ## 🏆 Results & Performance
 
--- Fine-tuned LLaMA 3.2 Vision on unsloth/Radiology_mini
--- Improved inference speed using vLLM on RunPod
--- Reduced memory consumption with bitsandbytes
--- Deployed interactive chatbot using Chainlit
+- **Fine-tuned LLaMA 3.2 Vision** on `unsloth/Radiology_mini`
+- **Improved inference speed** using vLLM on RunPod
+- **Reduced memory consumption** with bitsandbytes
+- **Deployed interactive chatbot** using Chainlit
+
 
 ## 🎯 Future Improvements
--- Train on larger radiology datasets for better accuracy.
--- Experiment with zero-shot & few-shot learning.
--- Deploy on AWS/GCP for scalable inference.
---  Improve image-text alignment using multi-modal embeddings.
+- **Train on larger radiology datasets for better accuracy.
+- **Experiment with zero-shot & few-shot learning.
+- **Deploy on AWS/GCP for scalable inference.
+- **Improve image-text alignment using multi-modal embeddings.
 
 ## 🤝 Contributions & Support
 **Feel free to contribute by:**
