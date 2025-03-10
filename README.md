@@ -33,3 +33,10 @@ This repository contains the **fine-tuned LLaMA 3.2-11B Vision Model** for **rad
 - It uses **PagedAttention**, reducing VRAM consumption and improving **batch processing**.
 - **RunPod** provides an affordable cloud-based GPU environment for **deploying vLLM models**.
 
+## 🏋️ Fine-Tuning the Model
+
+To fine-tune the model, run:
+
+```sh
+jupyter notebook Fine_Tuned_LLaMA3.2_Model.ipynb
+```
