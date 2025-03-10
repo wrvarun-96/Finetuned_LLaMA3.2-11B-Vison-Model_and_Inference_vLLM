@@ -1,20 +1,17 @@
-# Finetuned_LLaMA3.2-11B-Vison-Model_and_Inference_vLLM
+# 🚀 Finetuned LLaMA 3.2-11B Vision Model and Inference with vLLM on RunPod
 
-
-# 🚀 Finetuned LLaMA 3.2-11B Vision Model and Inference with vLLM
-
-This repository contains the **fine-tuned LLaMA 3.2-11B Vision Model** for **radiology image analysis**, along with **efficient inference using vLLM**. The model was fine-tuned using **LoRA (Low-Rank Adaptation)** with **Unsloth**, optimized with **4-bit quantization (bitsandbytes)**, and deployed for inference using **Chainlit**.
+This repository contains the **fine-tuned LLaMA 3.2-11B Vision Model** for **radiology image analysis**, along with **efficient inference using vLLM on RunPod**. The model was fine-tuned using **LoRA (Low-Rank Adaptation)** with **Unsloth**, optimized with **4-bit quantization (bitsandbytes)**, and deployed using **Chainlit**.
 
 ---
 
 ## 📖 **Project Overview**
 - **Model**: `LLaMA 3.2-11B Vision`
 - **Fine-Tuning Framework**: `Unsloth`
-- **Inference Engine**: `vLLM`
+- **Inference Engine**: `vLLM on RunPod`
 - **Dataset**: `unsloth/Radiology_mini`
 - **Training Method**: `LoRA` (Parameter Efficient Fine-Tuning)
 - **Quantization**: `4-bit`
-- **Deployment**: `Chainlit` interactive chatbot
+- **Deployment**: `Chainlit` chatbot
 
 ---
 
@@ -25,8 +22,6 @@ This repository contains the **fine-tuned LLaMA 3.2-11B Vision Model** for **rad
 ├── Fine_Tuned_LLaMA3.2_Model.ipynb  # Jupyter Notebook for model fine-tuning
 ├── requirements.txt            # Required dependencies
 ├── chainlit.md                 # Documentation for running Chainlit
-├── vllm/                       # Folder containing inference scripts
+├── vllm/                       # vLLM inference scripts
 ├── __pycache__/                # Python cache files
 └── README.md                   # Project documentation (this file)
-
-
