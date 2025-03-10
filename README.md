@@ -35,9 +35,9 @@ This repository contains the **fine-tuned LLaMA 3.2-11B Vision Model** for **rad
   
 ### 🚀 Setting Up vLLM on RunPod
 
-**Create an instance** with the vLLM template: `"llama3.2-11B-Vision-Model"`
-**Start the container** with the following command to run your model:
-   ```sh
+- **Create an instance** with the vLLM template: `"llama3.2-11B-Vision-Model"`
+- **Start the container** with the following command to run your model:
+```sh
    --model Varu96/Llama-3.2-11B-Vision-Radiology-mini \
    --enforce-eager \
    --max-num-seqs 8 \
@@ -45,7 +45,7 @@ This repository contains the **fine-tuned LLaMA 3.2-11B Vision Model** for **rad
    --max-model-len 2048 \
    --port 8000
 ```
-**Once the container is running, retrieve the base URL:
+- **Once the container is running, retrieve the base URL:
 ```sh
 https://9xeffjgstk6m28-8000.proxy.runpod.net
 ```
