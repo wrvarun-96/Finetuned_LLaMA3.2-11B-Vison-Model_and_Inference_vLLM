@@ -29,7 +29,7 @@ This repository contains the **fine-tuned LLaMA 3.2-11B Vision Model** for **rad
 
 ## ⚡ vLLM Deployment on RunPod
 ### Why vLLM?
-- **vLLM (Very Large Language Model inference)** is an optimized inference engine for **efficient throughput and memory usage**.
+- **vLLM** is an optimized inference engine for **efficient throughput and memory usage**.
 - It uses **PagedAttention**, reducing VRAM consumption and improving **batch processing**.
 - **RunPod** provides an affordable cloud-based GPU environment for **deploying vLLM models**.
 
@@ -40,3 +40,90 @@ To fine-tune the model, run:
 ```sh
 jupyter notebook Fine_Tuned_LLaMA3.2_Model.ipynb
 ```
+
+## 🔍 Inference with Chainlit & vLLM
+
+Running the Interactive Chatbot
+
+```sh
+chainlit run chat.py
+```
+This launches a local web app (http://localhost:8000) where you can:
+
+-- Upload radiology images
+-- Ask questions about the image
+-- Receive AI-generated diagnoses using vLLM inference.
+
+## 📜 Training & Inference Code
+
+**Fine-Tuning LLaMA 3.2 Vision Model**
+
+```sh
+model, tokenizer = FastVisionModel.from_pretrained(
+    model_name='unsloth/Llama-3.2-11B-Vision-Instruct',
+    max_seq_length=2048,
+    dtype=None,
+    load_in_4bit=False
+)
+```
+
+**Running Inference on Radiology Images**
+```sh
+FastVisionModel.for_inference(model_unsloth)
+image = dataset[0]["image"]
+instruction = "You are an expert radiographer. Describe what you see."
+
+messages = [
+    {"role": "user", "content": [
+        {"type": "image"},
+        {"type": "text", "text": instruction}
+    ]}
+]
+```
+
+## 🚀 Pushing to Hugging Face Hub
+```sh
+model_unsloth.save_pretrained_merged("Varu96/llama-3.2-11B-Vision-Medical", tokenizer)
+model_unsloth.push_to_hub_merged(
+    "Varu96/llama-3.2-11B-Vision-Medical",
+    tokenizer,
+    save_method="merged_16bit",
+    token=os.environ.get("HF_TOKEN")
+)
+```
+ **Fine-tuned Model:** [View on Hugging Face](https://huggingface.co/Varu96/llama-3.2-11B-Vision-Medical)
+
+
+## 🏆 Results & Performance
+
+-- Fine-tuned LLaMA 3.2 Vision on unsloth/Radiology_mini
+-- Improved inference speed using vLLM on RunPod
+-- Reduced memory consumption with bitsandbytes
+-- Deployed interactive chatbot using Chainlit
+
+## 🎯 Future Improvements
+-- Train on larger radiology datasets for better accuracy.
+-- Experiment with zero-shot & few-shot learning.
+-- Deploy on AWS/GCP for scalable inference.
+--  Improve image-text alignment using multi-modal embeddings.
+
+## 🤝 Contributions & Support
+**Feel free to contribute by:**
+
+Creating pull requests for improvements.
+Reporting issues or suggesting features.
+For questions, reach out at wrvarun-96@github.com.
+
+## 🔗 References
+| Resource | Link |
+|----------|------|
+| 📜 **Paper on LLaMA 3** | [Read Here](https://arxiv.org/abs/2302.13971) |
+| 🤖 **Hugging Face Model** | [View on HF](https://huggingface.co/Varu96/llama-3.2-11B-Vision-Medical) |
+| 🖥️ **GitHub Repository** | [Project Repo](https://github.com/wrvarun-96/Finetuned_LLaMA3.2-11B-Vision-Model_and_Inference_vLLM) |
+
+
+
+
+
+
+
