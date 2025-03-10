@@ -25,3 +25,22 @@ This repository contains the **fine-tuned LLaMA 3.2-11B Vision Model** for **rad
 ├── vllm/                       # vLLM inference scripts
 ├── __pycache__/                # Python cache files
 └── README.md                   # Project documentation (this file)
+
+
+
+
+---
+
+## ⚡ vLLM Deployment on RunPod
+### Why vLLM?
+- **vLLM (Very Large Language Model inference)** is an optimized inference engine for **efficient throughput and memory usage**.
+- It uses **PagedAttention**, reducing VRAM consumption and improving **batch processing**.
+- **RunPod** provides an affordable cloud-based GPU environment for **deploying vLLM models**.
+
+### Setting Up vLLM on RunPod
+1. **Deploy a RunPod GPU instance** with `NVIDIA A100/4090`.
+2. **Install vLLM on RunPod:**
+   ```sh
+   pip install vllm
+
+
