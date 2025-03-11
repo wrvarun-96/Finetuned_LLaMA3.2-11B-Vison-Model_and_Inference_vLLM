@@ -113,7 +113,8 @@ This launches a local web app (http://localhost:8000) where you can:
 - **Receive AI-generated diagnoses using vLLM inference.**
 
 ### Chainlit - Model Inference on Radiology Images
-    Below is a screenshot showing the inference output of the fine-tuned LLaMA-3.2-11B-Vision model on a radiology X-ray image.
+#### Below is a screenshot showing the inference output of the fine-tuned LLaMA-3.2-11B-Vision model on a radiology X-ray image.
+![Chainlit](images/output.png)
 
 ## 🏆 Results & Performance
 
