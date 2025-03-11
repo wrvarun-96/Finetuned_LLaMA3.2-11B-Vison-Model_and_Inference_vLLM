@@ -27,29 +27,6 @@ This repository contains the **fine-tuned LLaMA 3.2-11B Vision Model** for **rad
 └── README.md                   # Project documentation (this file)
 ```
 
-## ⚡ vLLM Deployment on RunPod
-### Why vLLM?
-- **vLLM** is an optimized inference engine for **efficient throughput and memory usage**.
-- **It uses **PagedAttention**, reducing VRAM consumption and improving **batch processing**.
-- **RunPod** provides an affordable cloud-based GPU environment for **deploying vLLM models**.
-  
-### 🚀 Setting Up vLLM on RunPod
-
-- **Create an instance** with the vLLM template: `"llama3.2-11B-Vision-Model"`
-- **Start the container** with the following command to run your model:
-```sh
-   --model Varu96/Llama-3.2-11B-Vision-Radiology-mini \
-   --enforce-eager \
-   --max-num-seqs 8 \
-   --limit-mm-per-prompt 'image=1' \
-   --max-model-len 2048 \
-   --port 8000
-```
-- **Once the container is running, retrieve the base URL:
-```sh
-https://9xeffjgstk6m28-8000.proxy.runpod.net
-```
-
 ## 🏋️ Fine-Tuning the Model
 
 To fine-tune the model, run:
@@ -110,6 +87,28 @@ model_unsloth.push_to_hub_merged(
 ```
  **Fine-tuned Model:** [View on Hugging Face](https://huggingface.co/Varu96/llama-3.2-11B-Vision-Medical)
 
+## ⚡ vLLM Deployment on RunPod
+### Why vLLM?
+- **vLLM** is an optimized inference engine for **efficient throughput and memory usage**.
+- **It uses **PagedAttention**, reducing VRAM consumption and improving **batch processing**.
+- **RunPod** provides an affordable cloud-based GPU environment for **deploying vLLM models**.
+  
+### 🚀 Setting Up vLLM on RunPod
+
+- **Create an instance** with the vLLM template: `"llama3.2-11B-Vision-Model"`
+- **Start the container** with the following command to run your model:
+```sh
+   --model Varu96/Llama-3.2-11B-Vision-Radiology-mini \
+   --enforce-eager \
+   --max-num-seqs 8 \
+   --limit-mm-per-prompt 'image=1' \
+   --max-model-len 2048 \
+   --port 8000
+```
+- **Once the container is running, retrieve the base URL:
+```sh
+https://9xeffjgstk6m28-8000.proxy.runpod.net
+```
 
 ## 🏆 Results & Performance
 
