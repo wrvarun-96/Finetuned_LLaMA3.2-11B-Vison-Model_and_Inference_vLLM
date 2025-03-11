@@ -73,9 +73,9 @@ model_unsloth.push_to_hub_merged(
 ```
  **Fine-tuned Model:** [View on Hugging Face](https://huggingface.co/Varu96/llama-3.2-11B-Vision-Medical)
 
-# vLLM Deployment on RunPod
+## vLLM Deployment on RunPod
 
-## Why vLLM?
+### Why vLLM?
 vLLM is an optimized inference engine for efficient throughput and memory usage.  
 **It uses PagedAttention, reducing VRAM consumption and improving batch processing.**  
 
@@ -86,9 +86,7 @@ Below is a **RunPod dashboard screenshot**, showing the status of a **vLLM-power
 
 ![RunPod Dashboard - Model Deployment](img1.png)
 
----
-
-## 🚀 Setting Up vLLM on RunPod
+### 🚀 Setting Up vLLM on RunPod
 1. **Create an instance** with the vLLM template: **"llama3.2-11B-Vision-Model"**.
 2. **Configure and start the container** with the following command:
 
