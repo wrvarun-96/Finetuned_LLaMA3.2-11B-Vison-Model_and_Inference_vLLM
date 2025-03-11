@@ -67,9 +67,9 @@ chainlit run chat.py
 ```
 This launches a local web app (http://localhost:8000) where you can:
 
-- **Upload radiology images
-- **Ask questions about the image
-- **Receive AI-generated diagnoses using vLLM inference.
+- **Upload radiology images.**
+- **Ask questions about the image.**
+- **Receive AI-generated diagnoses using vLLM inference.**
 
 ## 📜 Training & Inference Code
 
