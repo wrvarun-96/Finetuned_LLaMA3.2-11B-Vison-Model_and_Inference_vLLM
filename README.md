@@ -16,15 +16,14 @@ This repository contains the **fine-tuned LLaMA 3.2-11B Vision Model** for **rad
 ---
 
 ## 📂 **Repository Structure**
-```plaintext
+```markdown
 📦 Finetuned_LLaMA3.2-11B-Vision-Model_and_Inference_vLLM
+├── Notebooks/
+│   └── fine_tuned_LLaMA3_2_11B_vison_model.ipynb  # Jupyter Notebook for model fine-tuning
 ├── chat.py                    # Chainlit-powered chatbot for image inference
-├── Fine_Tuned_LLaMA3.2_Model.ipynb  # Jupyter Notebook for model fine-tuning
 ├── requirements.txt            # Required dependencies
 ├── chainlit.md                 # Documentation for running Chainlit
-├── vllm/                       # vLLM inference scripts
-├── __pycache__/                # Python cache files
-└── README.md                   # Project documentation (this file)
+├── README.md                   # Project documentation (this file)
 ```
 
 ## 🏋️ Fine-Tuning the Model
@@ -32,27 +31,14 @@ This repository contains the **fine-tuned LLaMA 3.2-11B Vision Model** for **rad
 To fine-tune the model, run:
 
 ```sh
-jupyter notebook Fine_Tuned_LLaMA3.2_Model.ipynb
+jupyter notebook Notebooks/fine_tuned_LLaMA3_2_11B_vison_model.ipynb
 ```
-
-## 🔍 Inference with Chainlit & vLLM
-
-Running the Interactive Chatbot
-
-```sh
-chainlit run chat.py
-```
-This launches a local web app (http://localhost:8000) where you can:
-
-- **Upload radiology images.**
-- **Ask questions about the image.**
-- **Receive AI-generated diagnoses using vLLM inference.**
 
 ## 📜 Training & Inference Code
 
 **Fine-Tuning LLaMA 3.2 Vision Model**
 
-```sh
+```bash
 model, tokenizer = FastVisionModel.from_pretrained(
     model_name='unsloth/Llama-3.2-11B-Vision-Instruct',
     max_seq_length=2048,
@@ -97,18 +83,31 @@ model_unsloth.push_to_hub_merged(
 
 - **Create an instance** with the vLLM template: `"llama3.2-11B-Vision-Model"`
 - **Start the container** with the following command to run your model:
-```sh
-   --model Varu96/Llama-3.2-11B-Vision-Radiology-mini \
-   --enforce-eager \
-   --max-num-seqs 8 \
-   --limit-mm-per-prompt 'image=1' \
-   --max-model-len 2048 \
-   --port 8000
+    ```bash
+    --model Varu96/Llama-3.2-11B-Vision-Radiology-mini \
+    --enforce-eager \
+    --max-num-seqs 8 \
+    --limit-mm-per-prompt 'image=1' \
+    --max-model-len 2048 \
+    --port 8000
+    ```
+- Once the container is running, retrieve the base URL:
+    ```bash
+    https://9xeffjgstk6m28-8000.proxy.runpod.net
+    ```
+
+## 🔍 Inference with Chainlit & vLLM
+
+Running the Interactive Chatbot
+
+```bash
+chainlit run chat.py
 ```
-- **Once the container is running, retrieve the base URL:
-```sh
-https://9xeffjgstk6m28-8000.proxy.runpod.net
-```
+This launches a local web app (http://localhost:8000) where you can:
+
+- **Upload radiology images.**
+- **Ask questions about the image.**
+- **Receive AI-generated diagnoses using vLLM inference.**
 
 ## 🏆 Results & Performance
 
