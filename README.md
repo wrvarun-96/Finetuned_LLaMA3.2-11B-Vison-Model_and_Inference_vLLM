@@ -84,11 +84,11 @@ RunPod provides an affordable cloud-based GPU environment for deploying vLLM mod
 ### RunPod Dashboard - Model Deployment
 Below is a **RunPod dashboard screenshot**, showing the status of a **vLLM-powered LLaMA 3.2-11B Vision model** running on an **A40 GPU instance**.
 
-![RunPod Dashboard - Model Deployment](img1.png)
+![RunPod Dashboard - Model Deployment](images/img1.png)
 
 ### 🚀 Setting Up vLLM on RunPod
-1. **Create an instance** with the vLLM template: **"llama3.2-11B-Vision-Model"**.
-2. **Configure and start the container** with the following command:
+- **Create an instance** with the vLLM template: **"llama3.2-11B-Vision-Model"**.
+- **Configure and start the container** with the following command:
 
    ```sh
    --model Varu96/Llama-3.2-11B-Vision-Radiology-mini \
