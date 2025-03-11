@@ -120,10 +120,10 @@ model_unsloth.push_to_hub_merged(
 
 
 ## 🎯 Future Improvements
-- **Train on larger radiology datasets for better accuracy.
-- **Experiment with zero-shot & few-shot learning.
-- **Deploy on AWS/GCP for scalable inference.
-- **Improve image-text alignment using multi-modal embeddings.
+- **Train on larger radiology datasets for better accuracy.**
+- **Experiment with zero-shot & few-shot learning.**
+- **Deploy on AWS/GCP for scalable inference.**
+- **Improve image-text alignment using multi-modal embeddings.**
 
 ## 🤝 Contributions & Support
 **Feel free to contribute by:**
