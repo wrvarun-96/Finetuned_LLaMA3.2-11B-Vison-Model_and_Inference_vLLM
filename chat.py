@@ -1,24 +1,25 @@
-
 import chainlit as cl
 import httpx
-import json
 
 model = "Varu96/Llama-3.2-11B-Vision-Medical"
 base_url = "https://9xeffjgstk6m28-8000.proxy.runpod.net/"
 conversation_history = []
 
+
 def format_conversation_history(history):
     # Convert the list of tuples to a string and remove square brackets
-    formatted_history = str(history).strip('[]')
+    formatted_history = str(history).strip("[]")
 
     # Replace the tuples' parentheses and clean up the format
-    formatted_history = formatted_history.replace('), (', '; ').replace('(', '').replace(')', '')
+    formatted_history = (
+        formatted_history.replace("), (", "; ").replace("(", "").replace(")", "")
+    )
 
     return formatted_history
 
 
-system_prompt_base = f"""You are an AI assistant trained in medical imaging analysis. Please analyze the provided image and provide relevant insights.
-"""
+system_prompt_base = "You are an AI assistant trained in medical imaging analysis. Please analyze the provided image and provide relevant insights."
+
 
 def build_sys_prompt(system_prompt_base, conversation_history):
     formatted_history = format_conversation_history(history=conversation_history)
@@ -33,13 +34,13 @@ async def generate_completion(system_prompt, user_prompt, model):
         "model": model,
         "messages": [
             {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt}
+            {"role": "user", "content": user_prompt},
         ],
         "temperature": 0.6,
-        "stop": "<|eot_id|>"
+        "stop": "<|eot_id|>",
     }
     timeout = httpx.Timeout(30.0)
-    
+
     # Use httpx.AsyncClient to make the POST request
     async with httpx.AsyncClient(timeout=timeout) as client:
         response = await client.post(url, headers=headers, json=data)
@@ -51,13 +52,12 @@ async def generate_completion(system_prompt, user_prompt, model):
 
 @cl.on_message
 async def on_message(message: cl.Message):
-
     system_prompt = build_sys_prompt(system_prompt_base, conversation_history)
     user_prompt = message.content
     response = await generate_completion(system_prompt, user_prompt, model)
 
-    print(F"RESPONSE: {response}")
-    assistant_response = response['choices'][0]['message']['content']
+    print(f"RESPONSE: {response}")
+    assistant_response = response["choices"][0]["message"]["content"]
     await cl.Message(content=assistant_response).send()
 
     conversation_history.append((message.content, assistant_response))
